@@ -5,6 +5,7 @@ const { Trip } = require("../models/trip");
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const auth = require("../middleware/auth");
+const { Category } = require("../models/category");
 
 //registration
 router.post("/", async (req, res) => {
@@ -64,27 +65,79 @@ router.get("/trips", auth, async (req, res) => {
     res.send(error.message);
   }
 });
-//edit profile
+
+//update User
+// router.post("/update", auth, async (req, res) => {
+//   try {
+//     const user = await User.findById(req.user._id).select("-password");
+//     if (!user) {
+//       res.send("not found user");
+//     } else {
+//       user.email = req.body.email ? req.body.email : user.email;
+//       user.fullName = req.body.fullName ? req.body.fullName : user.fullName;
+//       user.save();
+//       res.send(user);
+//     }
+//   } catch (error) {
+//     res.send(error.message);
+//   }
+// });
+
+//update user info
 router.post("/update", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user._id).select("-password");
-    if (!user) {
-      res.send("not found user");
-    } else {
-      User.findByIdAnd
-      User.updateOne(
-        { _id: req.user._id },
-        {
-          $set: {
-            fullName: req.body.fullName,
-            // email: req.body.email ? req.body.email : user.email,
-          },
-        }
-      );
-     
-    }
+    const user = await User.updateOne(
+      { _id: req.user._id },
+      {
+        $set: {
+          email: req.body.email,
+          fullName: req.body.fullName,
+        },
+      }
+    );
+    res.json({ message: "updated succesfullt" });
+    console.log(user);
   } catch (error) {
     res.send(error.message);
+  }
+});
+
+router.get("/categories", auth, async (req, res) => {
+  user = await User.findById(req.user._id);
+  if (!user) {
+    res.send("acces denied");
+  } else {
+    const result = [];
+    let nb = 0;
+    const array = user.categoriesId;
+    array.forEach(async (id) => {
+      const cat = await Category.findById(id).select("-userId");
+      if (cat != null) {
+        result.push(cat);
+      }
+      if (++nb === array.length) {
+        res.send(result);
+      }
+    });
+  }
+});
+router.get("/trips", auth, async (req, res) => {
+  user = await User.findById(req.user._id);
+  if (!user) {
+    res.send("acces denied");
+  } else {
+    const result = [];
+    let nb = 0;
+    const array = user.tripsId;
+    array.forEach(async (id) => {
+      const cat = await Trip.findById(id).select("-userId");
+      if (cat != null) {
+        result.push(cat);
+      }
+      if (++nb === array.length) {
+        res.send(result);
+      }
+    });
   }
 });
 

@@ -27,10 +27,23 @@ const tripSchema = new mongoose.Schema({
   budget: {
     type: Number,
     default: 0,
+    required: true,
   },
   userId: {
     type: schema.Types.ObjectId,
     ref: "User",
+    required: false,
+  },
+  expenses: {
+    type: [{ type: schema.Types.ObjectId, ref: "Expense" }],
+    required: false,
+  },
+  todos: {
+    type: [{ type: schema.Types.ObjectId, ref: "Todo" }],
+    required: false,
+  },
+  tovisit: {
+    type: [{ type: schema.Types.ObjectId, ref: "Tovisit" }],
     required: false,
   },
 });
@@ -42,6 +55,7 @@ function tripValidate(trip) {
     desciption: joi.string().min(3).max(255).required(),
     dateStart: joi.date().required(),
     dateEnd: joi.date().required(),
+    budget: joi.number().required(),
   });
 
   return schema.validate(trip);

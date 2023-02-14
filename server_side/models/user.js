@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const joi = require("joi");
 const jwt = require("jsonwebtoken");
+
 const schema = mongoose.Schema;
 const userSchema = new mongoose.Schema({
   fullName: {
@@ -21,7 +22,7 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 1024,
   },
-  tripsId: {
+  ex: {
     type: [{ type: schema.Types.ObjectId, ref: "Trip" }],
     required: false,
   },
