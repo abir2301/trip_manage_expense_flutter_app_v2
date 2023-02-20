@@ -37,6 +37,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_native_splash: ^2.2.17
   introduction_screen: ^3.1.4
+  flutter_svg: ^1.1.6
+  neumorphic_button: ^0.0.1+2
+  google_fonts: ^4.0.3
+  outline_material_icons: ^0.1.1
 
 dev_dependencies:
   flutter_test:

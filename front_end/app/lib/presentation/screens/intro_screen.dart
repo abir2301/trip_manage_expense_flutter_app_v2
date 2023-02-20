@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 import '../../assistant/build_image.dart';
-import 'registerPage.dart';
+import 'register_screen.dart';
 
 class IntroScreen extends StatefulWidget {
   const IntroScreen({super.key});
@@ -49,7 +49,7 @@ class _IntroScreenState extends State<IntroScreen> {
     return SafeArea(
       child: IntroductionScreen(
         key: introKey,
-        globalBackgroundColor: Colors.white,
+        globalBackgroundColor: const Color(0xffF3F8FE),
         allowImplicitScrolling: true,
         // autoScrollDuration: 3000,
 

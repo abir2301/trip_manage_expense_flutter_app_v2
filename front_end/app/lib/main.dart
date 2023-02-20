@@ -1,4 +1,6 @@
 import 'package:app/presentation/screens/intro_screen.dart';
+import 'package:app/presentation/screens/register_screen.dart';
+import 'package:app/presentation/screens/welcomming_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -21,8 +23,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: IntroScreen(),
+    return const MaterialApp(
+      home: Scaffold(backgroundColor: Color(0xffF3F8FE), body: WelcomeScreen()),
     );
   }
 }
