@@ -1,6 +1,8 @@
+import 'package:app/presentation/screens/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:outline_material_icons/outline_material_icons.dart';
+import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../assistant/global.dart';
 import '../../assistant/widgets/rounded_button.dart';
@@ -33,61 +35,92 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: kBackgroundColor,
         body: SafeArea(
             child: Center(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 20),
-            child: Container(
-              // height: MediaQuery.of(context).size.height * 0.5,
-              width: MediaQuery.of(context).size.width * 0.3,
-              // ignore: sort_child_properties_last
-              child: Icon(
-                (Icons.connecting_airports),
-                size: 100,
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  height: MediaQuery.of(context).size.width * 0.5,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  // ignore: sort_child_properties_last
+                  child: Icon(
+                    (Icons.connecting_airports),
+                    size: MediaQuery.of(context).size.width * 0.4,
+                    color: Colors.white,
+                  ),
+                  decoration: const BoxDecoration(
+                    // borderRadius: BorderRadius.circular(180),
+                    color: kPrimaryColor,
+                    shape: BoxShape.circle,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 1,
+                        offset: Offset(0.5, 0.5),
+                      )
+                    ],
+                  ),
+                ),
               ),
-              decoration: const BoxDecoration(
-                // borderRadius: BorderRadius.circular(180),
-                color: kPrimaryColor,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    offset: Offset(0.5, 0.5),
-                  )
-                ],
+              const SizedBox(
+                height: 50,
               ),
-            ),
+              InputField(
+                labelText: "Email Address ",
+                controller: emailController,
+                placeholderText: "exemple@exemple.com",
+                icon: Icons.mail,
+                validator: () {},
+                inputType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              InputField(
+                labelText: "Password  ",
+                controller: passwordController,
+                placeholderText: "*******",
+                icon: Icons.lock,
+                obsecureText: true,
+                sufixIcon: Icons.visibility_off,
+                validator: () {},
+                inputType: TextInputType.emailAddress,
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+              ActionButton(navigate, "Login"),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                Text(
+                  " don't have an account ?",
+                  style: GoogleFonts.poppins(
+                      textStyle: const TextStyle(
+                          color: Color(0xff474747), fontSize: 15)),
+                  textAlign: TextAlign.start,
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const RegisterScreen(),
+                        ));
+                  },
+                  child: Text(
+                    'Sign in',
+                    style: kInkWellText,
+                  ),
+                ),
+              ]),
+            ],
           ),
-          const SizedBox(
-            height: 50,
-          ),
-          InputField("Email Address", emailController, "Email",
-              Icons.email_outlined, false),
-          const SizedBox(
-            height: 20,
-          ),
-          InputField("Password", passwordController, "",
-              Icons.lock_outline_rounded, true),
-          const SizedBox(
-            height: 20,
-          ),
-          ActionButton(navigate, "Login"),
-          SizedBox(
-            height: 20,
-          ),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     IconButton(onPressed: () {}, icon: const Icon(Icons.abc))
-          //   ],
-          // ),
-          SizedBox(),
-          Row(),
-        ],
-      ),
-    )));
+        )));
   }
 }

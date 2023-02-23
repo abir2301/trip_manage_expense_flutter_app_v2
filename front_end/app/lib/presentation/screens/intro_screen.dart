@@ -1,3 +1,4 @@
+import 'package:app/presentation/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
@@ -21,7 +22,7 @@ class _IntroScreenState extends State<IntroScreen> {
   // }
   static void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const RegisterScreen()),
+      MaterialPageRoute(builder: (_) => const LoginScreen()),
     );
   }
 

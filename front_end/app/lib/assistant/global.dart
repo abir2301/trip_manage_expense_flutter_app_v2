@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const String google_api_key = "AIzaSyB_h5YHdaKKU9R0u4U0O3QKLy8kyjufLUs";
-
 const String appName = "Meili Delivery";
 const kPrimaryColor = Color(0xFF3D4784);
 const klabelColor = Color(0xffB4B7BA);
@@ -15,19 +13,20 @@ const kiconColor = Color(0xffAFAFAF);
 const white = Color(0xffffffff);
 
 final ktitle = GoogleFonts.balooBhaijaan2(
-    textStyle: TextStyle(color: kTitleColor, letterSpacing: 0.5, fontSize: 25));
+    textStyle: TextStyle(
+        color: kTitleColor,
+        letterSpacing: 0.5,
+        fontSize: 25,
+        fontWeight: FontWeight.bold));
 final kLabelStyle = GoogleFonts.balooBhaijaan2(
     textStyle: TextStyle(color: klabelColor, letterSpacing: 0.5, fontSize: 20));
 final kPlaceholderStyle = GoogleFonts.akshar(
     textStyle:
-        TextStyle(color: kPlaceholderColor, letterSpacing: 0.5, fontSize: 20));
-// TextStyle(fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.bold
-// fontFamily:  Baloo Bhaijaan);
+        TextStyle(color: kPlaceholderColor, letterSpacing: 0.5, fontSize: 14));
 
-// final khintStyle = TextStyle(
-//   color: kPrimaryColor,
-// );
-
+final kInkWellText = GoogleFonts.balooBhaijaan2(
+    textStyle: const TextStyle(
+        color: Color(0xff6F6767), fontSize: 15, fontWeight: FontWeight.bold));
 const kOutlineInputBorder = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(20.0)),
 );
