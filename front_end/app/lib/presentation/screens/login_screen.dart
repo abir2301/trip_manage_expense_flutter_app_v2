@@ -9,6 +9,7 @@ import '../../assistant/widgets/rounded_button.dart';
 import '../../assistant/widgets/waves.dart';
 import '../components/buttons/actionButton.dart';
 import '../components/inputField.dart';
+import '../components/login_options.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -92,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 25,
               ),
-              ActionButton(navigate, "Login"),
+              ActionButton(fn: navigate, text: "Login"),
               const SizedBox(
                 height: 20,
               ),
@@ -119,6 +120,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ]),
+              Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: LoginOptions(
+                    size: 22,
+                    img1: "assets/google.png",
+                    img2: "assets/facebook.png",
+                  )),
             ],
           ),
         )));

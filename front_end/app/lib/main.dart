@@ -1,4 +1,5 @@
 import 'package:app/assistant/global.dart';
+import 'package:app/presentation/screens/home_page/home_screen.dart';
 import 'package:app/presentation/screens/intro_screen.dart';
 import 'package:app/presentation/screens/login_screen.dart';
 import 'package:app/presentation/screens/register_screen.dart';
@@ -30,7 +31,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       color: kBackgroundColor,
-      home: RegisterScreen(),
+      home: HomeScreen(),
     );
 
     // MaterialApp.router(

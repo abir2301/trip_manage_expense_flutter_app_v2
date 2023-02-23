@@ -30,17 +30,7 @@ class InputField extends StatelessWidget {
     return Container(
         width: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.03),
-                spreadRadius: 10,
-                blurRadius: 3,
-                // changes position of shadow
-              ),
-            ]),
+        decoration: kBoxDecoration,
         child: Padding(
           padding:
               const EdgeInsets.only(left: 20, top: 15, bottom: 5, right: 20),

@@ -9,9 +9,21 @@ const kTitleColor = Color(0xff5B5F92);
 const kBackgroundColor = Color(0xFFF3F8FE);
 const kTypicalTextColor = Color(0xFF0C1D42);
 const kGrey = Color(0xFFD3D3D3);
+const KIconColor = Color(0xff6F6767);
+const Color grey = Colors.grey;
 const kiconColor = Color(0xffAFAFAF);
 const white = Color(0xffffffff);
-
+final kBoxDecoration = BoxDecoration(
+    color: Colors.white,
+    borderRadius: BorderRadius.circular(25),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(0.03),
+        spreadRadius: 10,
+        blurRadius: 3,
+        // changes position of shadow
+      ),
+    ]);
 final ktitle = GoogleFonts.balooBhaijaan2(
     textStyle: TextStyle(
         color: kTitleColor,

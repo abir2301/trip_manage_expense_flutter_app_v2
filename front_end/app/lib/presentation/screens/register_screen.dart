@@ -29,8 +29,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Center(
           child: ListView(
             children: [
-              ScreenTitle(
-                title: "Registration",
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: ScreenTitle(
+                  title: "Registration",
+                ),
               ),
               const SizedBox(
                 height: 50,
@@ -70,7 +73,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               const SizedBox(
                 height: 25,
               ),
-              ActionButton(fn:(){}, text:"Rgister"),
+              ActionButton(text: "Rgister", fn: () {}),
               const SizedBox(
                 height: 20,
               ),
