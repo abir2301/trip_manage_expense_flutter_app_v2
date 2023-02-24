@@ -13,6 +13,7 @@ const KIconColor = Color(0xff6F6767);
 const Color grey = Colors.grey;
 const kiconColor = Color(0xffAFAFAF);
 const white = Color(0xffffffff);
+const Color mainFontColor = Color(0xff565c95);
 final kBoxDecoration = BoxDecoration(
     color: Colors.white,
     borderRadius: BorderRadius.circular(25),
@@ -25,16 +26,35 @@ final kBoxDecoration = BoxDecoration(
       ),
     ]);
 final ktitle = GoogleFonts.balooBhaijaan2(
-    textStyle: TextStyle(
+    textStyle: const TextStyle(
         color: kTitleColor,
         letterSpacing: 0.5,
         fontSize: 25,
         fontWeight: FontWeight.bold));
+final kH1TextStyle = GoogleFonts.balooBhaijaan2(
+    textStyle: const TextStyle(
+        color: kPrimaryColor,
+        letterSpacing: 0.5,
+        fontSize: 20,
+        fontWeight: FontWeight.bold));
+final kH5TextStyle = GoogleFonts.balooBhaijaan2(
+    textStyle: const TextStyle(
+        color: kPrimaryColor,
+        letterSpacing: 0.5,
+        fontSize: 20,
+        fontWeight: FontWeight.bold));
+final kH3TextStyle = GoogleFonts.abel(
+    textStyle: const TextStyle(
+  color: Color(0xff6F6767),
+  letterSpacing: 1,
+  fontSize: 15,
+));
 final kLabelStyle = GoogleFonts.balooBhaijaan2(
-    textStyle: TextStyle(color: klabelColor, letterSpacing: 0.5, fontSize: 20));
-final kPlaceholderStyle = GoogleFonts.akshar(
     textStyle:
-        TextStyle(color: kPlaceholderColor, letterSpacing: 0.5, fontSize: 14));
+        const TextStyle(color: klabelColor, letterSpacing: 0.5, fontSize: 20));
+final kPlaceholderStyle = GoogleFonts.akshar(
+    textStyle: const TextStyle(
+        color: kPlaceholderColor, letterSpacing: 0.5, fontSize: 14));
 
 final kInkWellText = GoogleFonts.balooBhaijaan2(
     textStyle: const TextStyle(
