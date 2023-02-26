@@ -4,7 +4,13 @@ const express = require("express");
 const router = express.Router();
 const { User, userValidate } = require("../models/user");
 const { Category, categoryValidate } = require("../models/category");
-const {addExpense , deleteExpense} =require ('../usecases/expense_usecase')
+const {
+  addExpense,
+  deleteExpense,
+  updateExpense,
+  addAmount,
+  removeAmount,
+} = require("../usecases/expense_usecase");
 const { Expense, expenseValidate } = require("../models/expense");
 const auth = require("../middleware/auth");
 const { Trip } = require("../models/trip");
@@ -62,51 +68,18 @@ router.post("/:id", auth, async (req, res) => {
 });
 // //update expense name and date
 router.post("/update/:id", auth, async (req, res) => {
-  let user = await User.findById(req.user._id);
-  if (!user) {
-    res.send(" user dont authorised ");
-  } else {
-    try {
-      const expense = await Expense.updateOne(
-        { _id: req.params.id },
-        {
-          $set: {
-            name: req.body.name,
-            date: req.body.date,
-          },
-        }
-      );
-      res.json({ message: "updated  expense  succesfully " });
-      console.log(expense);
-    } catch (error) {
-      res.send(error.message);
-    }
-  }
+  const result = await updateExpense(
+    req.params.id,
+    req.body.name,
+    req.body.date,
+    req.user._id
+  );
+  res.send(result);
 });
 // improve amount
 router.post("/addAmount/:id", auth, async (req, res) => {
-  const { Category, categoryValidate } = require("../models/category");
-
-  let user = await User.findById(req.user._id);
-  if (!user) {
-    res.send(" user dont authorised ");
-  } else {
-    try {
-      const expense_1 = await Expense.findById(req.params.id);
-      const expense = await Expense.updateOne(
-        { _id: req.params.id },
-        {
-          $set: {
-            amount: expense_1.amount + req.body.amount,
-          },
-        }
-      );
-      res.json({ message: "update amount improving " });
-      console.log(expense);
-    } catch (error) {
-      res.send(error.message);
-    }
-  }
+  const result = await addAmount(req.params.id, req.body.amount, req.user._id);
+  res.send(result);
 });
 // remove from  amount
 router.post("/removeAmount/:id", auth, async (req, res) => {
@@ -135,11 +108,10 @@ router.post("/removeAmount/:id", auth, async (req, res) => {
     }
   }
 });
-// //delete cat
-router.delete("/delete/:idE", auth, async (req, res) => {
-  const result =await deleteExpense(req.params.id, req.user._id)
-  
+// //delete  expense
+router.delete("/delete/:id", auth, async (req, res) => {
+  const result = await deleteExpense(req.params.id, req.user._id);
+  res.send(result);
 });
-
 
 module.exports = router;

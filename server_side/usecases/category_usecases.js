@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const { User } = require("../models/user");
 const { Category, categoryValidate } = require("../models/category");
+const { deleteExpense } = require("./expense_usecase");
 
 const _ = require("lodash");
 
@@ -67,10 +68,14 @@ async function deleteCategory(id, userId) {
       if (cat) {
         // Category.deleteOne({ name: req.body.name });
         const index = user.categoriesId.indexOf(req.params.id);
+        const array = cat.expensesId;
+        array.forEach(async (id1) => {
+          res= await deleteExpense(id1, userId);
+        });
         user.categoriesId.splice(index, 1);
         user.save();
         console.log(user.categoriesId.indexOf(req.params.id));
-        return ({ message: "delete succesfully ", "category ": cat });
+        return { message: "delete succesfully ", "category ": cat };
       } else {
         return "not found category ";
       }

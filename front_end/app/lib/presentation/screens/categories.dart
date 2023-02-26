@@ -12,10 +12,12 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     print("${widget.text}");
-    return Center(
-      child: Container(
-        child: Text("${widget.text}"),
-      ),
+    return Column(
+      children: [
+      Row(children: [
+      
+      ],)
+      ],
     );
   }
 }

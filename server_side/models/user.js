@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
     maxlength: 1024,
   },
-  ex: {
+  tripsId: {
     type: [{ type: schema.Types.ObjectId, ref: "Trip" }],
     required: false,
   },

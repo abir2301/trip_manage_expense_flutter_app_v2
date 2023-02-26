@@ -21,7 +21,7 @@ router.post("/", auth, async (req, res) => {
   if (!user) {
     res.send(" user dont authorised ");
   } else {
-    // res.send(user)
+   
     const trip = new Trip({
       name: req.body.name,
       desciption: req.body.desciption,
@@ -31,7 +31,9 @@ router.post("/", auth, async (req, res) => {
     });
     trip.userId = user._id;
     trip.save();
-    user.tripsId.push(trip._id);
+    console.log(user);
+    const array = user.tripsId;
+    array.push(trip._id);
     user.save();
     res.send(trip);
   }
@@ -64,7 +66,7 @@ router.get("/todos/:id", auth, async (req, res) => {
     }
   }
 });
-//add  trip
+// update  trip
 router.post("/:id", auth, async (req, res) => {
   const { error } = tripValidate(req.body);
   if (error) {

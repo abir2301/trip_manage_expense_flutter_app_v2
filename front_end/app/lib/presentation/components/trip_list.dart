@@ -45,7 +45,7 @@ class TripList extends StatelessWidget {
                           ],
                         ),
                         Text(
-                          "${trips[index]["expenses"]}/${trips[index]["budget"]} \$",
+                          "${trips[index]["expenses"]}\$ /${trips[index]["budget"]} \$",
                           style: GoogleFonts.balooBhaijaan2(
                               textStyle: const TextStyle(
                                   color: Color(0xff6F6767),
@@ -54,7 +54,7 @@ class TripList extends StatelessWidget {
                                   fontWeight: FontWeight.bold)),
                         ),
                         Text(
-                            "${trips[index]["date_start"]}--${trips[index]["date_end"]} ")
+                            "${trips[index]["date_start"]} -- ${trips[index]["date_end"]} ")
                       ],
                     ),
                   ),

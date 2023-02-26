@@ -21,7 +21,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       children: [
         Container(
           margin: EdgeInsets.only(top: 25, left: 25, right: 25, bottom: 10),
-          height: MediaQuery.of(context).size.width * .8,
+          height: MediaQuery.of(context).size.width * .9,
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(25),
@@ -51,8 +51,8 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                     )
                   ],
                 ),
-                SizedBox(
-                  height: 10,
+                const SizedBox(
+                  height: 25,
                 ),
                 Column(
                   children: [
@@ -148,7 +148,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                   icon: const Icon(
                     Icons.sort,
                     color: KIconColor,
-                    size: 35,
+                    size: 25,
                   ))
             ],
           ),

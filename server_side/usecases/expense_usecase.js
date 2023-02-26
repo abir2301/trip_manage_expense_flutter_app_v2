@@ -65,8 +65,9 @@ async function deleteExpense(idE, userId) {
   let user = await User.findById(userId);
   let expense = await Expense.findById(idE);
   if (expense) {
-    let trip = await Trip.findById(expense.tripId);
-    let category = await Category.findOne({ name: expense.category });
+    const trip = await Trip.findById(expense.tripId);
+    const  category = await Category.findOne({ name: expense.category });
+   
     if (!user) {
       return "user dont authorised ";
     } else {
@@ -76,15 +77,14 @@ async function deleteExpense(idE, userId) {
           if (exp) {
             const indexC = category.expensesId.indexOf(idE);
             category.expensesId.splice(indexC, 1);
-            category.save();
+             category.save();
+            //console.log(trip);
             const indexT = trip.expenses.indexOf(idE);
+
             trip.expenses.splice(indexT, 1);
             trip.save();
 
-            return {
-              message: "delete succesfully expense  ",
-              "expense ": expense,
-            };
+            return "delete succesfully expense  ";
           }
         }
       } catch (error) {
@@ -95,5 +95,78 @@ async function deleteExpense(idE, userId) {
     return "invalid input id ";
   }
 }
+async function updateExpense(idE, name, date, userId) {
+  let user = await User.findById(userId);
+  if (!user) {
+    return " user dont authorised ";
+  } else {
+    try {
+      const expense = await Expense.updateOne(
+        { _id: idE },
+        {
+          $set: {
+            name: name,
+            date: date,
+          },
+        }
+      );
+      return { message: "updated  expense  succesfully " };
+      console.log(expense);
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
+async function addAmount(idE, amount, userId) {
+  let user = await User.findById(userId);
+  if (!user) {
+    return " user dont authorised ";
+  } else {
+    try {
+      const expense_1 = await Expense.findById(idE);
+      const expense = await Expense.updateOne(
+        { _id: idE },
+        {
+          $set: {
+            amount: expense_1.amount + amount,
+          },
+        }
+      );
+      return { message: "update amount improving " };
+      console.log(expense);
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
+async function removeAmount(idE, amount, userId) {
+  let user = await User.findById(userId);
+  if (!user) {
+    return " user dont authorised ";
+  } else {
+    try {
+      const expense_1 = await Expense.findById(IDBRequest);
+      if (expense_1.amount >= amount) {
+        const expense = await Expense.updateOne(
+          { _id: idE },
+          {
+            $set: {
+              amount: expense_1.amount - amount,
+            },
+          }
+        );
+        return { message: "update amount reducing " };
+        console.log(expense);
+      } else {
+        return " not enougth ";
+      }
+    } catch (error) {
+      return error.message;
+    }
+  }
+}
 exports.addExpense = addExpense;
 exports.deleteExpense = deleteExpense;
+exports.updateExpense = updateExpense;
+exports.addAmount = addAmount;
+exports.removeAmount = removeAmount;
