@@ -1,4 +1,5 @@
 import 'package:app/assistant/global.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 import '../../../data/user_model.dart';
@@ -134,26 +135,38 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         ),
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: 30,
+            horizontal: 10,
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Trips :",
-                style: kH1TextStyle,
+          child: DottedBorder(
+            dashPattern: [8],
+            color: Color(0xFF9747FF),
+            strokeWidth: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Trips :",
+                        style: kH1TextStyle,
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.sort,
+                            color: KIconColor,
+                            size: 25,
+                          ))
+                    ],
+                  ),
+                  SafeArea(child: TripList())
+                ],
               ),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.sort,
-                    color: KIconColor,
-                    size: 25,
-                  ))
-            ],
+            ),
           ),
         ),
-        SafeArea(child: TripList())
       ],
     ));
   }

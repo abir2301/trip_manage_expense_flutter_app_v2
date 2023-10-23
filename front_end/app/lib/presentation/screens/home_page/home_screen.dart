@@ -37,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: SafeArea(
         child: SizedBox(
           child: FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/add_trip');
+            },
             // ignore: prefer_const_constructors, sort_child_properties_last
             child: Icon(
               Icons.add,
@@ -52,9 +54,18 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget getBody() {
-    return IndexedStack(
-      index: pageIndex,
-      children: pages,
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          opacity: 20,
+          image: AssetImage("assets/bg.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: IndexedStack(
+        index: pageIndex,
+        children: pages,
+      ),
     );
   }
 

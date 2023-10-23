@@ -1,4 +1,6 @@
 import 'package:app/assistant/global.dart';
+import 'package:app/presentation/screens/add_trip_screen.dart';
+import 'package:app/presentation/screens/categories.dart';
 import 'package:app/presentation/screens/home_page/home_screen.dart';
 import 'package:app/presentation/screens/intro_screen.dart';
 import 'package:app/presentation/screens/login_screen.dart';
@@ -29,9 +31,15 @@ class _MyAppState extends State<MyApp> {
   final routes = AppRoutes.generateRoutes();
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       color: kBackgroundColor,
-      home: HomeScreen(),
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/signUp': (context) => RegisterScreen(),
+        '/home': (context) => HomeScreen(),
+        "/add_trip": (context) => AddTripScreen(),
+        '/': (context) => HomeScreen(),
+      },
     );
 
     // MaterialApp.router(
